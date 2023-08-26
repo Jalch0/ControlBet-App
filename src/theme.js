@@ -3,6 +3,9 @@ import { createTheme } from "@mui/material/styles"
 
 // Color design tokens 
 
+
+//Produce shades with tailwind shades windows + kg
+
 export const tokens = (mode) => ({
     ...(mode === 'dark'
     ? {
