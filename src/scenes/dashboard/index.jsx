@@ -11,7 +11,6 @@ import LineChart from "../../components/LineChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
-import Line from "../line";
 
 const Dashboard = () => {
   const theme = useTheme();
