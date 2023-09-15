@@ -20,7 +20,8 @@ import Calendar from "./scenes/calendar";
 import axios from "axios";
 import { AuthContext } from "./context/authContext";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import Bets from "./scenes/bets";
+import Addbet from "./scenes/addbet"
 
 //CssBaseLine reset the css to default, and ThemeProvider add theme to the css (Material UI).
 
@@ -29,7 +30,6 @@ function App() {
   const [theme, colorMode] = useMode();
 
   const { currentUser } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -45,6 +45,8 @@ function App() {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/bankroll" element={<Bankroll />} />
                   <Route path="/addbankroll" element={<AddBankroll />} />
+                  <Route path="/bets" element={<Bets />} />
+                  <Route path="/addbet" element={<Addbet />} />
                   <Route path="/contacts" element={<Contacts />} />
                   <Route path="/invoices" element={<Invoices />} />
                   {/* <Route path="/form" element={<Form/>} /> */}

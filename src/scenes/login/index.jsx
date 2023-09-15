@@ -45,8 +45,6 @@ export default function SignIn() {
         username: data.get("username"),
         password: data.get("password")
     }
-    console.log(inputs)
-
     try {
         await login(inputs);
         console.log("nice login")
