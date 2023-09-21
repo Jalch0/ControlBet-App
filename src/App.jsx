@@ -22,11 +22,14 @@ import { AuthContext } from "./context/authContext";
 import { useContext } from "react";
 import Bets from "./scenes/bets";
 import Addbet from "./scenes/addbet"
+import EditSimpleBet from "./scenes/editbet/editsimplebet"
+import EditCombinedBet from "./scenes/editbet/editcombinedbet"
+import EditBankroll from "./scenes/editbankroll"
 
 //CssBaseLine reset the css to default, and ThemeProvider add theme to the css (Material UI).
 
 function App() {
-  axios.defaults.baseURL = `http://localhost:8000/api`;
+  axios.defaults.baseURL = `https://server-betstatistixs.vercel.app`;
   const [theme, colorMode] = useMode();
 
   const { currentUser } = useContext(AuthContext);
@@ -47,6 +50,9 @@ function App() {
                   <Route path="/addbankroll" element={<AddBankroll />} />
                   <Route path="/bets" element={<Bets />} />
                   <Route path="/addbet" element={<Addbet />} />
+                  <Route path="/editsimplebet" element={<EditSimpleBet />} />
+                  <Route path="/editcombinedbet" element={<EditCombinedBet />} />
+                  <Route path="/editbankroll" element={<EditBankroll />} />
                   <Route path="/contacts" element={<Contacts />} />
                   <Route path="/invoices" element={<Invoices />} />
                   {/* <Route path="/form" element={<Form/>} /> */}

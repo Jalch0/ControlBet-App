@@ -49,7 +49,7 @@ export default function SignUp() {
         password: data.get("password")
     }
     try {
-        await axios.post("http://localhost:8000/api/auth/register", inputs)
+        await axios.post("/auth/register", inputs)
 
     } catch (err) {
         setError(err.response.data);

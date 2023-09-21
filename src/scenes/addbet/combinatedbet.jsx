@@ -21,10 +21,6 @@ const states = [
     label: "Lost",
   },
   {
-    value: "Refunded",
-    label: "Refunded",
-  },
-  {
     value: "Cashout",
     label: "Cashout",
   },
@@ -41,29 +37,8 @@ const states = [
 const Combinatedbet = ({ setBet, id, name }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
-  const validationSchema = yup.object({
-    name: yup
-      .string("Enter your Bet Name")
-      .min(2, "Bet Name should be of minimum 2 characters length")
-      .max(30, "The Bet name must have a maximum length of 30 characters.")
-      .required("Bet name is required"),
-    amount: yup.string("Enter your amount").required("Amount is required!"),
-    bookmarker: yup
-      .string("Enter your bookmarker")
-      .min(2, "Bookmarker should be of minimum 2 characters length")
-      .max(30, "Bookmarker name must have a maximum length of 30 characters.")
-      .required("Bookmarker is required"),
-    sport: yup
-    .string("Enter your sport")
-    .required("Please enter the sport"),
-    odd: yup
-      .string("Enter the odd")
-      .required("Please enter your odd"),
-    state: yup
-      .string("Select your state")
-      .required("Please select the state of your bet"),
-  });
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -82,20 +57,45 @@ const Combinatedbet = ({ setBet, id, name }) => {
       ],
     },
     // validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       const sport = [];
-      const odd = [];
+      let odd = 1;
 
       values.bet.map((i) => {
         sport.push(i.sport);
-        odd.push(i.odd);
+        odd = odd * parseFloat(i.odd);
       });
-      const sport1 = sport.toString();
-      console.log(sport.toString());
-      // console.log(sport1.split(",")); This is how i do the reverse process
-      console.log(values);
+      
+      inputs.name = values.name;
+      inputs.amount = values.amount;
+      inputs.bookmarker = values.bookmarker;
+      inputs.state = values.state;
+      inputs.sport = sport.toString();
+      inputs.odd = odd;
+      console.log(inputs);
+
+      try {
+        await axios.post("/bet/add", inputs)
+        navigate("/bankroll")
+      } catch (err) {
+        setError(err.response.data)
+        console.log(error)
+      }
+
     },
   });
+
+  const inputs = {
+    id_bankroll: id,
+    type: "combined",
+    name: "",
+    amount: "",
+    bookmarker: "",
+    date: new Date().toDateString(),
+    state: "",
+    sport: "",
+    odd: "",
+  }
 
   const [total, setTotal] = useState();
 
@@ -141,11 +141,13 @@ const Combinatedbet = ({ setBet, id, name }) => {
             name="amount"
             label="Amount"
             type="number"
-            value={formik.values.password}
+            inputProps={{
+              step: 0.01,
+            }}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.amount && Boolean(formik.errors.amount)}
-            helperText={formik.touched.amount && formik.errors.amount}
+            // error={formik.touched.amount && Boolean(formik.errors.amount)}
+            // helperText={formik.touched.amount && formik.errors.amount}
             sx={{ marginBottom: "20px" }}
           />
           <TextField
@@ -153,7 +155,6 @@ const Combinatedbet = ({ setBet, id, name }) => {
             id="bookmarker"
             name="bookmarker"
             label="Bookmarker"
-            value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={
@@ -189,6 +190,7 @@ const Combinatedbet = ({ setBet, id, name }) => {
                     name={Odd}
                     label="Odd"
                     value={b.odd}
+                    type="number"
                     required
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -231,7 +233,6 @@ const Combinatedbet = ({ setBet, id, name }) => {
             id="select-state"
             select
             name="state"
-            defaultValue="Won"
             label="Select the state"
             value={formik.values.currency}
             onChange={formik.handleChange}

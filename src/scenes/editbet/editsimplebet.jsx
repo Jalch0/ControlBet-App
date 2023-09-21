@@ -9,6 +9,8 @@ import { Button, TextField, Box, useTheme, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import MenuItem from "@mui/material/MenuItem";
+import { useLocation } from "react-router-dom";
+
 
 const states = [
   {
@@ -18,6 +20,10 @@ const states = [
   {
     value: "Lost",
     label: "Lost",
+  },
+  {
+    value: "Refunded",
+    label: "Refunded",
   },
   {
     value: "Cashout",
@@ -33,10 +39,14 @@ const states = [
   },
 ];
 
-const Simplebet = ({ setBet, id }) => {
+const EditSimplebet = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const location = useLocation();
+  const propsData = location.state;
   const navigate = useNavigate();
+
+
   const [error, setError] = useState("");
 
   const validationSchema = yup.object({
@@ -64,22 +74,19 @@ const Simplebet = ({ setBet, id }) => {
 
   const formik = useFormik({
     initialValues: {
-      id_bankroll: id,
-      type: "simple",
-      name: "",
-      amount: "",
-      bookmarker: "",
-      sport: "",
+      name: propsData.name,
+      amount: propsData.capital,
+      bookmarker: propsData.bookmarker,
+      sport: propsData.sport,
       date: new Date().toDateString(),
-      odd: "",
-      state: "",
+      odd: propsData.odd,
+      state: '',
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      console.log(values.id_bankroll);
       try {
-        await axios.post("/bet/add", values)
-        navigate("/bankroll")
+        await axios.put(`/bet/${propsData.id}`, values)
+        navigate("/bankroll");
       } catch (err) {
         setError(err.response.data)
         console.log(error)
@@ -108,7 +115,7 @@ const Simplebet = ({ setBet, id }) => {
           <KeyboardReturnIcon onClick={() => setBet("")} />
         </Box>
         <Typography variant="h3" marginBottom="10px" textAlign="center">
-          New Simple Bet
+          Edit your Bet
         </Typography>
 
         <form onSubmit={formik.handleSubmit}>
@@ -116,7 +123,6 @@ const Simplebet = ({ setBet, id }) => {
             fullWidth
             id="name"
             name="name"
-            label="Bet"
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -128,12 +134,11 @@ const Simplebet = ({ setBet, id }) => {
             fullWidth
             id="amount"
             name="amount"
-            label="Amount"
             type="number"
             inputProps={{
               step: 0.01,
             }}
-            value={formik.values.password}
+            value={formik.values.amount}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.amount && Boolean(formik.errors.amount)}
@@ -144,8 +149,7 @@ const Simplebet = ({ setBet, id }) => {
             fullWidth
             id="bookmarker"
             name="bookmarker"
-            label="Bookmarker"
-            value={formik.values.password}
+            value={formik.values.bookmarker}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.bookmarker && Boolean(formik.errors.bookmarker)}
@@ -156,8 +160,7 @@ const Simplebet = ({ setBet, id }) => {
             fullWidth
             id="sport"
             name="sport"
-            label="Sport"
-            value={formik.values.password}
+            value={formik.values.sport}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.sport && Boolean(formik.errors.sport)}
@@ -168,12 +171,11 @@ const Simplebet = ({ setBet, id }) => {
             fullWidth
             id="odd"
             name="odd"
-            label="Odds"
             type="number"
             inputProps={{
               step: 0.01,
             }}
-            value={formik.values.password}
+            value={formik.values.odd}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.odd && Boolean(formik.errors.odd)}
@@ -184,8 +186,8 @@ const Simplebet = ({ setBet, id }) => {
             id="select-state"
             select
             name="state"
-            label="Select the state"
-            value={formik.values.currency}
+            label="Select your state"
+            value={formik.values.state}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.state && Boolean(formik.errors.state)}
@@ -208,4 +210,4 @@ const Simplebet = ({ setBet, id }) => {
   );
 };
 
-export default Simplebet;
+export default EditSimplebet;

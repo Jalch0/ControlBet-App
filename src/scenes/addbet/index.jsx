@@ -9,16 +9,19 @@ import Combinatedbet from "./combinatedbet";
 const Addbet = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const location = useLocation()
+  const location = useLocation();
   const propsData = location.state;
-  console.log(propsData);
 
   const [bet, setBet] = useState("");
 
   if (bet === "simple") {
-    return <Simplebet setBet={setBet} id={propsData.id} name={propsData.name}/>;
+    return (
+      <Simplebet setBet={setBet} id={propsData.id} name={propsData.name}/>
+    );
   } else if (bet === "combinated") {
-    return <Combinatedbet setBet={setBet} id={propsData.id} name={propsData.name} />;
+    return (
+      <Combinatedbet setBet={setBet} id={propsData.id} name={propsData.name}/>
+    );
   } else
     return (
       <Box

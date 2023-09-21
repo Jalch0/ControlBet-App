@@ -1,9 +1,15 @@
 import { Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 
-const ProgressCircle = ({progress = "0.75", size="40"}) => {
+const ProgressCircle = ({firstValue = 0, secondValue= 0, progress, size="40"}) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+
+    if(firstValue === 0) {
+        progress = 1
+    }else {
+        progress = (((secondValue * 100)/firstValue) / 100)
+    }
     const angle = progress * 360;
 
     return (
