@@ -2,10 +2,11 @@ import { useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useContext } from "react";
 import { useFormik } from "formik";
-import { useNavigate  } from "react-router-dom";
-import axios from "axios"
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import * as yup from "yup";
 import { Button, TextField, Box, useTheme, Typography } from "@mui/material";
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import { tokens } from "../../theme";
 import MenuItem from "@mui/material/MenuItem";
 
@@ -49,12 +50,8 @@ const validationSchema = yup.object({
     .min(2, "Name should be of minimum 2 characters length")
     .max(30, "The Bankroll name must have a maximum length of 30 characters.")
     .required("Bankroll name is required"),
-  capital: yup
-    .string("Enter your capital")
-    .required("Capital is required!"),
-  odd: yup
-  .string("Select your odd")
-  .required("Please select your odd"),
+  capital: yup.string("Enter your capital").required("Capital is required!"),
+  odd: yup.string("Select your odd").required("Please select your odd"),
   currency: yup
     .string("Select your currency")
     .required("Please select your currency"),
@@ -67,8 +64,7 @@ const Addbankroll = () => {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -76,20 +72,19 @@ const Addbankroll = () => {
       capital: "",
       odd: "",
       currency: "",
-      id_user: currentUser?.id
+      id_user: currentUser?.id,
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        await axios.post("/bankroll/add", values)
+        await axios.post("/bankroll/add", values);
         navigate("/bankroll");
       } catch (err) {
-        setError(err.response.data)
-        console.log(error)
+        setError(err.response.data);
+        console.log(error);
       }
     },
   });
-
 
   return (
     <Box
@@ -104,9 +99,12 @@ const Addbankroll = () => {
           backgroundColor: colors.primary[600],
           padding: "20px",
           borderRadius: "10px",
-          width: "50%"
+          width: "50%",
         }}
       >
+        <Box display="flex" justifyContent="end">
+          <KeyboardReturnIcon onClick={() => navigate("/bankroll")} />
+        </Box>
         <Typography variant="h3" textAlign="center" marginBottom="10px">
           New Bankroll
         </Typography>
@@ -120,7 +118,7 @@ const Addbankroll = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name}  
+            helperText={formik.touched.name && formik.errors.name}
             sx={{ marginBottom: "20px" }}
           />
           <TextField
@@ -133,7 +131,7 @@ const Addbankroll = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.capital && Boolean(formik.errors.capital)}
-            helperText={formik.touched.capital && formik.errors.capital}  
+            helperText={formik.touched.capital && formik.errors.capital}
             sx={{ marginBottom: "20px" }}
           />
           <TextField
@@ -146,7 +144,7 @@ const Addbankroll = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.currency && Boolean(formik.errors.currency)}
-            helperText={formik.touched.currency && formik.errors.currency}  
+            helperText={formik.touched.currency && formik.errors.currency}
             sx={{ marginBottom: "20px", width: "100%" }}
           >
             {currencies.map((option) => (
@@ -164,7 +162,6 @@ const Addbankroll = () => {
             value={formik.values.odd}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-
             error={formik.touched.odd && Boolean(formik.errors.odd)}
             helperText={formik.touched.odd && formik.errors.odd}
             sx={{ marginBottom: "15px", width: "100%" }}

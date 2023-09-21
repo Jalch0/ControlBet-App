@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import { useNavigate  } from "react-router-dom";
-import axios from "axios"
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,18 +9,19 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../../context/authContext';
+import { useTheme } from "@mui/material";
+import { tokens } from "../../theme";
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      This website is developed by {" "}
+      <Link color="inherit" href="https://github.com/Jalch0">
+        Javier Labrador
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -29,11 +29,10 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
   const [err, setError] = useState(null);
   const { login } = useContext(AuthContext);
@@ -55,20 +54,21 @@ export default function SignIn() {
   };
 
   return (
-    
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" >
         <CssBaseline />
         <Box
           sx={{
+            padding: "25px",
+            borderRadius: "5px",
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            backgroundColor: colors.primary[400]
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            <VpnKeyIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -80,7 +80,7 @@ export default function SignIn() {
               required
               fullWidth
               id="username"
-              label="username"
+              label="Username"
               name="username"
               autoComplete="username"
               autoFocus
@@ -107,15 +107,10 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-            {err && <Typography>{err}</Typography>}
+            {err && <Typography color={colors.redAccent[500]} sx={{fontWeight: "bold"}}>{err}</Typography>}
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link sx={{color: colors.grey[100]}} href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -124,6 +119,5 @@ export default function SignIn() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    </ThemeProvider>
   );
 }

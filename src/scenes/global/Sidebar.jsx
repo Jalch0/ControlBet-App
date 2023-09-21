@@ -41,6 +41,7 @@ const Sidebar = () => {
 
   return (
     <Box
+    height="100vh"
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -126,13 +127,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Typography
+{!isCollapsed ? <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Management
-            </Typography>
+            </Typography> : ""}
 
             <Item
               title="My bankrolls"

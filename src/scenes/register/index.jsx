@@ -12,32 +12,28 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useTheme } from "@mui/material";
+import { tokens } from "../../theme";
 
 function Copyright(props) {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      This website is developed by {" "}
+      <Link color="inherit" href="https://github.com/Jalch0">
+        Javier Labrador
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
   );
 }
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
 
 export default function SignUp() {
-
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const [err, setError] = useState(null) 
 
   const handleSubmit = async (event) => {
@@ -58,15 +54,17 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
+            padding: "25px",
+            borderRadius: "5px",
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            backgroundColor: colors.primary[400]
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -115,7 +113,7 @@ export default function SignUp() {
               control={<Checkbox value="allowExtraEmails" color="primary" />}
               label="I want to receive inspiration, marketing promotions and updates via email."
             />
-            {err && <Typography>{err}</Typography>}
+            {err && <Typography color={colors.redAccent[500]}>{err}</Typography>}
             <Button
               type="submit"
               fullWidth
@@ -126,7 +124,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/" variant="body2">
+                <Link sx={{color: colors.grey[100]}} href="/" variant="body2" >
                   Already have an account? Sign in
                 </Link>
               </Grid>
@@ -135,6 +133,5 @@ export default function SignUp() {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-    </ThemeProvider>
   );
 }
