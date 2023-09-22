@@ -13,6 +13,8 @@ import StatBox from "../../components/StatBox";
 import { ResponsiveBar } from "@nivo/bar";
 import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -21,6 +23,11 @@ const Dashboard = () => {
   const [bankroll, setBankroll] = useState([]);
   const [bet, setBet] = useState([]);
   const [update, setUpdate] = useState();
+
+  const Desktop = useMediaQuery('(min-width:1200px)');
+  const Ipad = useMediaQuery('(min-width:1000px)');
+  const Mobile = useMediaQuery('(min-width:800px)');
+
   const mockTransactions = [];
 
   const Bardata = [];
@@ -102,7 +109,7 @@ const Dashboard = () => {
       state: i.state,
     });
     if (i.state === "Won") {
-      totalProfits = totalProfits + i.amount * i.odd;
+      totalProfits = totalProfits + ((i.amount * i.odd) - i.amount);
     } else if (i.state === "Lost") {
       totalProfits = totalProfits - i.amount;
     }
@@ -126,7 +133,7 @@ const Dashboard = () => {
 
         {/* Download Button  */}
 
-        <Box display="flex" flexDirection="column" alignItems="end">
+        <Box display="flex" flexDirection="column" alignItems="end" >
           <Typography variant="h3">
             Welcome Back {currentUser?.username}
           </Typography>
