@@ -93,7 +93,7 @@ const NewBankroll = ({ id, name, capital }) => {
 
     if (day[1] === dateCalc[1] && Number(day[2]) === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[0] = daysbet[0] + i.amount * i.odd;
+        daysbet[0] = daysbet[0] + ((i.amount * i.odd) - i.amount);
       } else if (i.state === "Lost") {
         daysbet[0] = daysbet[0] - i.amount;
       }
@@ -112,7 +112,7 @@ const NewBankroll = ({ id, name, capital }) => {
 
     if (day[1] === dateCalc[1] && day[2] - 1 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[1] = daysbet[1] + i.amount * i.odd;
+        daysbet[1] = daysbet[1] + ((i.amount * i.odd) - i.amount);
       } else if (i.state === "Lost") {
         daysbet[1] = daysbet[1] - i.amount;
       }
@@ -129,7 +129,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 2 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[2] = daysbet[2] + i.amount * i.odd;
+        daysbet[2] = daysbet[2] + ((i.amount * i.odd) - i.amount);
       } else if (i.state === "Lost") {
         daysbet[2] = daysbet[2] - i.amount;
       }
@@ -146,7 +146,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 3 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[3] = daysbet[3] + i.amount * i.odd;
+        daysbet[3] = daysbet[3] ((i.amount * i.odd) - i.amount);
       } else if (i.state === "Lost") {
         daysbet[3] = daysbet[3] - i.amount;
       }
@@ -163,7 +163,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 4 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[4] = daysbet[4] + i.amount * i.odd;
+        daysbet[4] = daysbet[4] + ((i.amount * i.odd) - i.amount);
       } else if (i.state === "Lost") {
         daysbet[4] = daysbet[4] - i.amount;
       }
@@ -180,7 +180,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 5 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[5] = daysbet[5] + i.amount * i.odd;
+        daysbet[5] = daysbet[5] + ((i.amount * i.odd) - i.amount);
       } else if (i.state === "Lost") {
         daysbet[5] = daysbet[5] - i.amount;
       }
@@ -197,7 +197,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 6 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[6] = daysbet[6] + i.amount * i.odd;
+        daysbet[6] = daysbet[6] + ((i.amount * i.odd) - i.amount);
       } else if (i.state === "Lost") {
         daysbet[6] = daysbet[6] - i.amount;
       }
