@@ -27,7 +27,7 @@ const NewBankroll = ({ id, name, capital }) => {
       color: "#3A82D4",
     },
     {
-      day: "Thur",
+      day: "Tue",
       AmountBetPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },
@@ -37,7 +37,7 @@ const NewBankroll = ({ id, name, capital }) => {
       color: "hsl(298, 70%, 50%)",
     },
     {
-      day: "Tue",
+      day: "Thur",
       AmountBetPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },

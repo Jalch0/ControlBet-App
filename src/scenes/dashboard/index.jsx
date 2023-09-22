@@ -125,6 +125,7 @@ const Dashboard = () => {
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
         {/* Download Button  */}
+
         <Box display="flex" flexDirection="column" alignItems="end">
           <Typography variant="h3">
             Welcome Back {currentUser?.username}
@@ -134,6 +135,7 @@ const Dashboard = () => {
             I hope you have a great day betting!
           </Typography>
         </Box>
+
       </Box>
 
       {/* GRID & CHARTS */}
