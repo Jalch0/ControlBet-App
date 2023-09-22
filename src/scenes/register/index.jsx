@@ -35,6 +35,7 @@ export default function SignUp() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [err, setError] = useState(null) 
+  console.log("entre");
 
   const handleSubmit = async (event) => {
     event.preventDefault();

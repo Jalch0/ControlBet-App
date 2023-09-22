@@ -46,7 +46,6 @@ export default function SignIn() {
     }
     try {
         await login(inputs);
-        console.log("nice login")
         navigate("/")
     } catch (err) {
         setError(err.response.data);
