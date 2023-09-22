@@ -1,38 +1,38 @@
 export const mockDataBank = [
     {
         "day": "Mon",
-        "AmountBetPerDay": 50,
-        "AmountBetPerDayColor": "hsl(201, 55%, 37%)"
+        "AmountGainPerDay": 50,
+        "AmountGainPerDayColor": "hsl(201, 55%, 37%)"
       },
       {
         "day": "Thur",
-        "AmountBetPerDay": 50,
-        "AmountBetPerDayColor": "hsl(201, 55%, 37%)"
+        "AmountGainPerDay": 50,
+        "AmountGainPerDayColor": "hsl(201, 55%, 37%)"
       },
       {
         "day": "Wed",
-        "AmountBetPerDay": 32,
-        "AmountBetPerDayColor": "hsl(201, 55%, 37%)"
+        "AmountGainPerDay": 32,
+        "AmountGainPerDayColor": "hsl(201, 55%, 37%)"
       },
       {
         "day": "Tue",
-        "AmountBetPerDay": 35,
-        "AmountBetPerDayColor": "hsl(201, 55%, 37%)"
+        "AmountGainPerDay": 35,
+        "AmountGainPerDayColor": "hsl(201, 55%, 37%)"
       },
       {
         "day": "Fri",
-        "AmountBetPerDay": 98,
-        "AmountBetPerDayColor": "hsl(201, 55%, 37%)"
+        "AmountGainPerDay": 98,
+        "AmountGainPerDayColor": "hsl(201, 55%, 37%)"
       },
       {
         "day": "Sat",
-        "AmountBetPerDay": 10,
-        "AmountBetPerDayColor": "hsl(201, 55%, 37%)"
+        "AmountGainPerDay": 10,
+        "AmountGainPerDayColor": "hsl(201, 55%, 37%)"
       },
       {
         "day": "Sun",
-        "AmountBetPerDay": 5,
-        "AmountBetPerDayColor": "hsl(201, 55%, 37%)"
+        "AmountGainPerDay": 5,
+        "AmountGainPerDayColor": "hsl(201, 55%, 37%)"
       },
   ];
 

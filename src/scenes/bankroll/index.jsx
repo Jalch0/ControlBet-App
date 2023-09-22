@@ -23,37 +23,37 @@ const NewBankroll = ({ id, name, capital }) => {
   const mockDataBank = [
     {
       day: "Mon",
-      AmountBetPerDay: 0,
+      AmountGainPerDay: 0,
       color: "#3A82D4",
     },
     {
       day: "Tue",
-      AmountBetPerDay: 0,
+      AmountGainPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },
     {
       day: "Wed",
-      AmountBetPerDay: 0,
+      AmountGainPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },
     {
       day: "Thur",
-      AmountBetPerDay: 0,
+      AmountGainPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },
     {
       day: "Fri",
-      AmountBetPerDay: 0,
+      AmountGainPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },
     {
       day: "Sat",
-      AmountBetPerDay: 0,
+      AmountGainPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },
     {
       day: "Sun",
-      AmountBetPerDay: 0,
+      AmountGainPerDay: 0,
       color: "hsl(298, 70%, 50%)",
     },
   ];
@@ -105,7 +105,7 @@ const NewBankroll = ({ id, name, capital }) => {
             ds.color = colors.redAccent[500];
           }
 
-          ds.AmountBetPerDay = Math.abs(daysbet[0].toFixed(2));
+          ds.AmountGainPerDay = Math.abs(daysbet[0].toFixed(2));
         }
       });
     }
@@ -123,7 +123,7 @@ const NewBankroll = ({ id, name, capital }) => {
           } else {
             ds.color = colors.redAccent[500];
           }
-          ds.AmountBetPerDay = Math.abs(daysbet[1].toFixed(2));
+          ds.AmountGainPerDay = Math.abs(daysbet[1].toFixed(2));
         }
       });
     }
@@ -140,7 +140,7 @@ const NewBankroll = ({ id, name, capital }) => {
           } else {
             ds.color = colors.redAccent[500];
           }
-          ds.AmountBetPerDay = Math.abs(daysbet[2].toFixed(2));
+          ds.AmountGainPerDay = Math.abs(daysbet[2].toFixed(2));
         }
       });
     }
@@ -157,7 +157,7 @@ const NewBankroll = ({ id, name, capital }) => {
           } else {
             ds.color = colors.redAccent[500];
           }
-          ds.AmountBetPerDay = Math.abs(daysbet[3].toFixed(2));
+          ds.AmountGainPerDay = Math.abs(daysbet[3].toFixed(2));
         }
       });
     }
@@ -174,7 +174,7 @@ const NewBankroll = ({ id, name, capital }) => {
           } else {
             ds.color = colors.redAccent[500];
           }
-          ds.AmountBetPerDay = Math.abs(daysbet[4].toFixed(2));
+          ds.AmountGainPerDay = Math.abs(daysbet[4].toFixed(2));
         }
       });
     }
@@ -191,7 +191,7 @@ const NewBankroll = ({ id, name, capital }) => {
           } else {
             ds.color = colors.redAccent[500];
           }
-          ds.AmountBetPerDay = Math.abs(daysbet[5].toFixed(2));
+          ds.AmountGainPerDay = Math.abs(daysbet[5].toFixed(2));
         }
       });
     }
@@ -208,7 +208,7 @@ const NewBankroll = ({ id, name, capital }) => {
           } else {
             ds.color = colors.redAccent[500];
           }
-          ds.AmountBetPerDay = Math.abs(daysbet[6].toFixed(2));
+          ds.AmountGainPerDay = Math.abs(daysbet[6].toFixed(2));
         }
       });
     }
@@ -325,7 +325,7 @@ const NewBankroll = ({ id, name, capital }) => {
                 },
               },
             }}
-            keys={["AmountBetPerDay"]}
+            keys={["AmountGainPerDay"]}
             indexBy="day"
             margin={{ top: 10, right: 0, bottom: 25, left: 30 }}
             padding={0.5}
