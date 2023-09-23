@@ -23,10 +23,6 @@ const states = [
     label: "Lost",
   },
   {
-    value: "Refunded",
-    label: "Refunded",
-  },
-  {
     value: "Cashout",
     label: "Cashout",
   },

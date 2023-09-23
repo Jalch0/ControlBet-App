@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate  } from "react-router-dom";
 import axios from "axios"
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -35,6 +36,7 @@ export default function SignUp() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [err, setError] = useState(null) 
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,7 +48,7 @@ export default function SignUp() {
     }
     try {
         await axios.post("/auth/register", inputs)
-
+        navigate("/")
     } catch (err) {
         setError(err.response.data);
     }
