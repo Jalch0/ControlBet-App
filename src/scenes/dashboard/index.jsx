@@ -117,17 +117,17 @@ const Dashboard = () => {
   });
 
   return (
-    <Box m="20px">
+    <Box m={Mobile ? "20px" : "10px"}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
         {/* Download Button  */}
 
         <Box display="flex" flexDirection="column" alignItems="end" >
-          <Typography variant="h3">
+          <Typography variant={Mobile ? "h3" : "h4"}>
             Welcome Back {currentUser?.username}
           </Typography>
-          <Typography variant="h4" color={colors.greenAccent[500]}>
+          <Typography textAlign={Mobile ? "start" : "end"} variant={Mobile ? "h4" : "h6"} color={colors.greenAccent[500]}>
             {" "}
             I hope you have a great day betting!
           </Typography>
