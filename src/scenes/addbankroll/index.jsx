@@ -9,6 +9,7 @@ import { Button, TextField, Box, useTheme, Typography } from "@mui/material";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import { tokens } from "../../theme";
 import MenuItem from "@mui/material/MenuItem";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const currencies = [
   {
@@ -60,6 +61,7 @@ const validationSchema = yup.object({
 const Addbankroll = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const Mobile = useMediaQuery("(min-width:800px)");
 
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -99,13 +101,13 @@ const Addbankroll = () => {
           backgroundColor: colors.primary[600],
           padding: "20px",
           borderRadius: "10px",
-          width: "50%",
+          width: Mobile ? "50%" : "70%",
         }}
       >
         <Box display="flex" justifyContent="end">
           <KeyboardReturnIcon onClick={() => navigate("/bankroll")} />
         </Box>
-        <Typography variant="h3" textAlign="center" marginBottom="10px">
+        <Typography variant={Mobile ? "h3" : "h4"} textAlign="center" marginBottom={Mobile ? "10px" : "15px"}>
           New Bankroll
         </Typography>
         <form onSubmit={formik.handleSubmit}>

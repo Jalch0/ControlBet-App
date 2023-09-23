@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { AuthContext } from "../../context/authContext";
-import { useContext } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,6 +7,7 @@ import { Button, TextField, Box, useTheme, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import MenuItem from "@mui/material/MenuItem";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const states = [
   {
@@ -38,6 +37,8 @@ const Simplebet = ({ setBet, id }) => {
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const Mobile = useMediaQuery("(min-width:800px)");
+
 
   const validationSchema = yup.object({
     name: yup
@@ -98,16 +99,16 @@ const Simplebet = ({ setBet, id }) => {
     >
       <Box
         sx={{
-          backgroundColor: colors.primary[600],
+          backgroundColor: (theme.palette.mode === "dark" ? colors.primary[600] : colors.primary[500]),
           padding: "20px",
           borderRadius: "10px",
-          width: "50%",
+          width: Mobile ? "50%" : "70%",
         }}
       >
         <Box display="flex" justifyContent="end">
           <KeyboardReturnIcon onClick={() => setBet("")} />
         </Box>
-        <Typography variant="h3" marginBottom="10px" textAlign="center">
+        <Typography variant={Mobile ? "h3" : "h4"} marginBottom={Mobile ? "10px" : "15px"} textAlign="center">
           New Simple Bet
         </Typography>
 

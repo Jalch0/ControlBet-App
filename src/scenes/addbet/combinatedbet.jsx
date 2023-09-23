@@ -10,6 +10,8 @@ import { tokens } from "../../theme";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 
 const states = [
   {
@@ -39,6 +41,8 @@ const Combinatedbet = ({ setBet, id, name }) => {
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const Mobile = useMediaQuery("(min-width:800px)");
+
 
   const formik = useFormik({
     initialValues: {
@@ -109,16 +113,16 @@ const Combinatedbet = ({ setBet, id, name }) => {
     >
       <Box
         sx={{
-          backgroundColor: colors.primary[600],
+          backgroundColor: (theme.palette.mode === "dark" ? colors.primary[600] : colors.primary[500]),
           padding: "20px",
           borderRadius: "10px",
-          width: "50%",
+          width: Mobile ? "50%" : "80%",
         }}
       >
         <Box display="flex" justifyContent="end">
           <KeyboardReturnIcon onClick={() => setBet("")} />
         </Box>
-        <Typography variant="h3" marginBottom="10px" textAlign="center">
+        <Typography variant={Mobile ? "h3" : "h4"} marginBottom={Mobile ? "10px" : "15px"} textAlign="center">
           New Combinated Bet
         </Typography>
 
@@ -202,7 +206,7 @@ const Combinatedbet = ({ setBet, id, name }) => {
                   <Button
                     type="button"
                     color="secondary"
-                    variant="outlined"
+                    variant="contained"
                     onClick={() => {
                       formik.values.bet.pop(),
                         setTotal(formik.values.bet.length),
@@ -217,7 +221,7 @@ const Combinatedbet = ({ setBet, id, name }) => {
           })}
           <Divider/>
           <Button
-          sx={{margin: "10px 0 25px 0"}}
+          sx={{margin: "10px 0 25px 0", backgroundColor: (theme.palette.mode === "dark" ? colors.primary[500] : colors.primary[600])}}
             type="button"
             variant="contained"
             onClick={() => {

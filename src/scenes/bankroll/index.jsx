@@ -541,7 +541,7 @@ const Bankroll = () => {
                 color: colors.greenAccent[600],
               }}
             />
-            <Typography variant="h3" fontWeight="bold">
+            <Typography variant={Mobile ? "h3" : "h4"} fontWeight="bold">
               What are you waiting for to add your first bankroll?
             </Typography>
             <Button

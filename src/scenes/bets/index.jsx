@@ -404,10 +404,10 @@ const Bets = () => {
                 color: colors.greenAccent[500],
               }}
             />
-            <Typography variant="h3" fontWeight="bold">
+            <Typography variant={Mobile ? "h3" : "h4"} fontWeight="bold">
               This is the bankroll {propsData.name}
             </Typography>
-            <Typography variant="h3" fontWeight="bold">
+            <Typography variant={Mobile ? "h3" : "h4"} fontWeight="bold">
               What are you waiting for to add your first bet?
             </Typography>
             <Button

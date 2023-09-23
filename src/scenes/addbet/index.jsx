@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { Button, TextField, Box, useTheme, Typography } from "@mui/material";
+import { Button, Box, useTheme, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import Simplebet from "./simplebet";
 import Combinatedbet from "./combinatedbet";
