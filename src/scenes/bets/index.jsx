@@ -2,7 +2,6 @@ import { Box, Typography, useTheme, Button, Tab } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -12,6 +11,7 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import EditIcon from "@mui/icons-material/Edit";
 import LineChart from "../../components/LineChart";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
 
 
 const TableBets = ({
@@ -236,6 +236,8 @@ const Bets = () => {
   const propsData = location.state;
   const Mobile = useMediaQuery("(min-width:800px)");
 
+
+
   const [bets, setBet] = useState([]);
   const [update, setUpdate] = useState();
 
@@ -280,9 +282,6 @@ const Bets = () => {
     }
   });
 
-  console.log(DataLineChart[0]);
-  console.log(bets, "lol")
-  console.log(update);
   return (
     <>
       {Object.keys(bets).length ? (

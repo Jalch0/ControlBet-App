@@ -5,22 +5,24 @@ import { Button, TextField, Box, useTheme, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import Simplebet from "./simplebet";
 import Combinatedbet from "./combinatedbet";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Addbet = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const location = useLocation();
   const propsData = location.state;
+  const Mobile = useMediaQuery("(min-width:800px)");
 
   const [bet, setBet] = useState("");
 
   if (bet === "simple") {
     return (
-      <Simplebet setBet={setBet} id={propsData.id} name={propsData.name}/>
+      <Simplebet setBet={setBet} id={propsData.id} name={propsData.name} />
     );
   } else if (bet === "combinated") {
     return (
-      <Combinatedbet setBet={setBet} id={propsData.id} name={propsData.name}/>
+      <Combinatedbet setBet={setBet} id={propsData.id} name={propsData.name} />
     );
   } else
     return (
@@ -36,7 +38,7 @@ const Addbet = () => {
             backgroundColor: colors.primary[600],
             padding: "20px",
             borderRadius: "10px",
-            width: "50%",
+            width: Mobile ? "50%" : "95%",
           }}
         >
           <Typography variant="h3" textAlign="center" marginBottom="10px">
@@ -59,9 +61,12 @@ const Addbet = () => {
             >
               Combined Bet
             </Button>
-            <Button variant="contained" color="primary" size="large">
-              System Bet
-            </Button>
+            {Mobile ?
+              <Button variant="contained" color="primary" size="large">
+                System Bet
+              </Button>
+            :
+            <></>}
           </Box>
         </Box>
       </Box>
