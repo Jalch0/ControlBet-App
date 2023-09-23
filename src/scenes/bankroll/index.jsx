@@ -12,6 +12,7 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Header from "../../components/Header";
 import { AuthContext } from "../../context/authContext";
 import { ResponsiveBar } from "@nivo/bar";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const NewBankroll = ({ id, name, capital }) => {
   const theme = useTheme();
@@ -93,7 +94,7 @@ const NewBankroll = ({ id, name, capital }) => {
 
     if (day[1] === dateCalc[1] && Number(day[2]) === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[0] = daysbet[0] + ((i.amount * i.odd) - i.amount);
+        daysbet[0] = daysbet[0] + (i.amount * i.odd - i.amount);
       } else if (i.state === "Lost") {
         daysbet[0] = daysbet[0] - i.amount;
       }
@@ -112,7 +113,7 @@ const NewBankroll = ({ id, name, capital }) => {
 
     if (day[1] === dateCalc[1] && day[2] - 1 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[1] = daysbet[1] + ((i.amount * i.odd) - i.amount);
+        daysbet[1] = daysbet[1] + (i.amount * i.odd - i.amount);
       } else if (i.state === "Lost") {
         daysbet[1] = daysbet[1] - i.amount;
       }
@@ -129,7 +130,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 2 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[2] = daysbet[2] + ((i.amount * i.odd) - i.amount);
+        daysbet[2] = daysbet[2] + (i.amount * i.odd - i.amount);
       } else if (i.state === "Lost") {
         daysbet[2] = daysbet[2] - i.amount;
       }
@@ -146,7 +147,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 3 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[3] = daysbet[3] ((i.amount * i.odd) - i.amount);
+        daysbet[3] = daysbet[3] + (i.amount * i.odd - i.amount);
       } else if (i.state === "Lost") {
         daysbet[3] = daysbet[3] - i.amount;
       }
@@ -163,7 +164,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 4 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[4] = daysbet[4] + ((i.amount * i.odd) - i.amount);
+        daysbet[4] = daysbet[4] + (i.amount * i.odd - i.amount);
       } else if (i.state === "Lost") {
         daysbet[4] = daysbet[4] - i.amount;
       }
@@ -180,7 +181,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 5 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[5] = daysbet[5] + ((i.amount * i.odd) - i.amount);
+        daysbet[5] = daysbet[5] + (i.amount * i.odd - i.amount);
       } else if (i.state === "Lost") {
         daysbet[5] = daysbet[5] - i.amount;
       }
@@ -197,7 +198,7 @@ const NewBankroll = ({ id, name, capital }) => {
     }
     if (day[1] === dateCalc[1] && day[2] - 6 === Number(dateCalc[2])) {
       if (i.state === "Won") {
-        daysbet[6] = daysbet[6] + ((i.amount * i.odd) - i.amount);
+        daysbet[6] = daysbet[6] + (i.amount * i.odd - i.amount);
       } else if (i.state === "Lost") {
         daysbet[6] = daysbet[6] - i.amount;
       }
@@ -385,7 +386,7 @@ const NewBankroll = ({ id, name, capital }) => {
             layout="horizontal"
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
-            colors={{ scheme: 'category10' }}
+            colors={{ scheme: "category10" }}
             defs={[
               {
                 id: "dots",
@@ -452,6 +453,9 @@ const NewBankroll = ({ id, name, capital }) => {
 const Bankroll = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const Desktop = useMediaQuery("(min-width:1400px)");
+  const Ipad = useMediaQuery("(min-width:1000px)");
+  const Mobile = useMediaQuery("(min-width:800px)");
 
   const { currentUser } = useContext(AuthContext);
 
@@ -470,6 +474,8 @@ const Bankroll = () => {
     };
     fetchData();
   }, [userId]);
+
+  console.log(Mobile);
 
   return (
     <Box>
@@ -502,7 +508,12 @@ const Bankroll = () => {
         <Box
           ml="30px"
           display="grid"
-          gridTemplateColumns="1fr 1fr 1fr"
+          gridTemplateColumns={
+            !Ipad ? "1fr" :
+            (!Mobile ? "1fr" :
+            (!Desktop ? "1fr 1fr" :
+            "1fr 1fr 1fr"))
+          }
           rowGap="50px"
           paddingBottom="20px"
         >

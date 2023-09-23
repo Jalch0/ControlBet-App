@@ -7,16 +7,7 @@ import SignIn from "./scenes/login";
 import SignUp from "./scenes/register";
 import Dashboard from "./scenes/dashboard";
 import Bankroll from "./scenes/bankroll";
-import Invoices from "./scenes/invoices";
-import Contacts from "./scenes/contacts";
-import Bar from "./scenes/bar";
 import AddBankroll from "./scenes/addbankroll";
-// import Form from "./scenes/form"
-import Line from "./scenes/line";
-import Pie from "./scenes/pie";
-import FAQ from "./scenes/faq";
-// import Geography from "./scenes/geography"
-import Calendar from "./scenes/calendar";
 import axios from "axios";
 import { AuthContext } from "./context/authContext";
 import { useContext } from "react";
@@ -26,7 +17,6 @@ import EditSimpleBet from "./scenes/editbet/editsimplebet"
 import EditCombinedBet from "./scenes/editbet/editcombinedbet"
 import EditBankroll from "./scenes/editbankroll"
 
-//CssBaseLine reset the css to default, and ThemeProvider add theme to the css (Material UI).
 
 function App() {
   axios.defaults.baseURL = `https://server-betstatistixs.vercel.app`;

@@ -10,6 +10,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { AuthContext } from "../../context/authContext";
 import Button from '@mui/material/Button';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 // Component for item in the sidebar
 
@@ -33,10 +34,14 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const Sidebar = () => {
 
+  const Desktop = useMediaQuery('(min-width:1200px)');
+  const Ipad = useMediaQuery('(min-width:1000px)');
+  const Mobile = useMediaQuery('(min-width:800px)');
+
   const { currentUser, logout } = useContext(AuthContext);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(Mobile ? false : true);
   const [selected, setSelected] = useState("Dashboard");
 
   return (
@@ -63,14 +68,16 @@ const Sidebar = () => {
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* Logo and menu icon */}
+
           <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={() => Mobile ? setIsCollapsed(!isCollapsed) : "none" }
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 5px 0",
               color: colors.grey[100],
             }}
           >
+
             {!isCollapsed && (
               <Box
                 display="flex"
@@ -142,8 +149,11 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
             {currentUser ? (
-              <Button sx={{color: colors.greenAccent[500]}} onClick={logout}>Logout</Button>
+              <Box display="flex" justifyContent="center" >
+                <Button sx={{color: colors.greenAccent[500]}} onClick={logout}>Logout</Button>
+              </Box>
             ) : (<span>none</span>)}
           </Box>
         </Menu>

@@ -44,18 +44,8 @@ const Dashboard = () => {
       try {
         const res = await axios.get(`/bankroll/${userId}`);
         setBankroll(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, [userId]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`/bet/all/${userId}`);
-        setBet(res.data);
+        const res1 = await axios.get(`/bet/all/${userId}`);
+        setBet(res1.data);
         if (theme.palette.mode === "dark") {
           setUpdate(theme.palette.mode);
         }
@@ -65,6 +55,7 @@ const Dashboard = () => {
     };
     fetchData();
   }, [userId, theme.palette.mode]);
+
 
   let totalCapital = 0;
   let totalProfits = 0;
@@ -89,7 +80,6 @@ const Dashboard = () => {
               Bardata[n].data.push(totalBet);
             } else if (e.state === "Lost" || e.state === "Cashout") {
               totalBet = -e.amount;
-              console.log(totalBet, "lost");
               Bardata[n].data.push(totalBet);
             }
           }
@@ -148,7 +138,7 @@ const Dashboard = () => {
       {/* GRID & CHARTS */}
       <Box
         display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
+        gridTemplateColumns={Mobile ? "repeat(12, 1fr)" : "repeat(5, 1fr)"}
         gridAutoRows="140px"
         gap="20px"
       >
@@ -240,7 +230,7 @@ const Dashboard = () => {
         {/* ROW 2 */}
 
         <Box
-          gridColumn="span 8"
+          gridColumn={Mobile ? "span 8" : "span 6"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -306,7 +296,7 @@ const Dashboard = () => {
                 }}
                 keys={["Gains"]}
                 indexBy="bankroll"
-                margin={{ top: 20, right: 30, bottom: 28, left: 30 }}
+                margin={{ top: 20, right: 30, bottom: 28, left: 40 }}
                 padding={0.5}
                 valueScale={{ type: "linear" }}
                 indexScale={{ type: "band", round: true }}
@@ -355,7 +345,7 @@ const Dashboard = () => {
 
         {/* TRANSACTIONS  */}
         <Box
-          gridColumn="span 4"
+          gridColumn={Mobile ? "span 4" : "span 6"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -464,7 +454,7 @@ const Dashboard = () => {
 
         {/* Row 3 */}
         <Box
-          gridColumn="span 4"
+          gridColumn={Mobile ? "span 4" : "span 6"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
