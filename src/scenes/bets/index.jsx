@@ -11,6 +11,8 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import EditIcon from "@mui/icons-material/Edit";
 import LineChart from "../../components/LineChart";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 
 const TableBets = ({
   id,
@@ -203,10 +205,11 @@ const TableBets = ({
 const ComponentBet = ({ title, data }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const Mobile = useMediaQuery("(min-width:800px)");
 
   return (
     <Box
-      width="250px"
+      width={Mobile ? "250px" : "200px"}
       height="100px"
       borderRadius="10px"
       textAlign="center"
@@ -231,6 +234,7 @@ const Bets = () => {
   const colors = tokens(theme.palette.mode);
   const location = useLocation();
   const propsData = location.state;
+  const Mobile = useMediaQuery("(min-width:800px)");
 
   const [bets, setBet] = useState([]);
   const [update, setUpdate] = useState();
@@ -282,7 +286,7 @@ const Bets = () => {
   return (
     <>
       {Object.keys(bets).length ? (
-        <Box>
+        <Box width={Mobile ? "100%" : "800px"}>
           <Box>
             <Box
               marginLeft="15px"

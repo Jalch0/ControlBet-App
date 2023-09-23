@@ -228,7 +228,7 @@ const NewBankroll = ({ id, name, capital }) => {
       }}
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Typography variant="h4">{name}</Typography>
+        <Typography variant="h4" color={colors.grey[100]}>{name}</Typography>
         <Box>
           <Link
             to="/editbankroll"
@@ -281,14 +281,14 @@ const NewBankroll = ({ id, name, capital }) => {
                 %
               </Typography>
             )}
-            <Typography color="white">Than yesterday</Typography>
+            <Typography color={colors.grey[100]} >Than yesterday</Typography>
           </Box>
 
           <Box>
             <Typography variant="h4" color={colors.greenAccent[500]}>
               {capital}$
             </Typography>
-            <Typography color="white">Starting Capital</Typography>
+            <Typography color={colors.grey[100]} >Starting Capital</Typography>
           </Box>
           <Box>
             <Typography variant="h4" color={colors.greenAccent[500]}>
@@ -297,7 +297,7 @@ const NewBankroll = ({ id, name, capital }) => {
               )}
               $
             </Typography>
-            <Typography color="white">Total Gains</Typography>
+            <Typography color={colors.grey[100]} >Total Gains</Typography>
           </Box>
         </Box>
         <Box sx={{ height: "60%", width: "100%" }}>
@@ -475,7 +475,6 @@ const Bankroll = () => {
     fetchData();
   }, [userId]);
 
-  console.log(Mobile);
 
   return (
     <Box>
@@ -491,7 +490,7 @@ const Bankroll = () => {
             sx={{
               backgroundColor: colors.greenAccent[600],
               height: "40px",
-              mr: "15px",
+              mr: Mobile ? "15px" : "5px",
             }}
             variant="contained"
             component={Link}
@@ -507,6 +506,7 @@ const Bankroll = () => {
       {Object.keys(bankroll).length ? (
         <Box
           ml="30px"
+          mr="30px"
           display="grid"
           gridTemplateColumns={
             !Ipad ? "1fr" :
