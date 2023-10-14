@@ -44,7 +44,7 @@ const Simplebet = ({ setBet, id }) => {
     name: yup
       .string("Enter your Bet Name")
       .min(2, "Bet Name should be of minimum 2 characters length")
-      .max(30, "The Bet name must have a maximum length of 30 characters.")
+      .max(100, "The Bet name must have a maximum length of 30 characters.")
       .required("Bet name is required"),
     amount: yup.string("Enter your amount").required("Amount is required!"),
     bookmarker: yup
