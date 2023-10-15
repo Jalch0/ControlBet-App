@@ -50,7 +50,7 @@ const Simplebet = ({ setBet, id }) => {
     bookmarker: yup
       .string("Enter your bookmarker")
       .min(2, "Bookmarker should be of minimum 2 characters length")
-      .max(30, "Bookmarker name must have a maximum length of 30 characters.")
+      .max(100, "Bookmarker name must have a maximum length of 30 characters.")
       .required("Bookmarker is required"),
     sport: yup
     .string("Enter your sport")
