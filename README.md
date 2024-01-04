@@ -24,6 +24,10 @@ You will be able to select the types of bets you want to register, either "Singl
 
 ![App Screenshot](https://drive.google.com/uc?export=download&id=1Bc7HL5nzfbCjdlpZu4O1F4fc2zGSRzVi)
 
+## Server
+
+If you want to see the application server you can consult my [repository](https://github.com/Jalch0/server-betstatistixs) where it is located
+
 ## Feedback
 
 If you have any feedback, please reach out to us at jlabradorchacon@gmail.com
@@ -31,9 +35,6 @@ If you have any feedback, please reach out to us at jlabradorchacon@gmail.com
 
 ## Acknowledgements
 
- - [Next Auth](https://next-auth.js.org/)
- - [Next Cloudinary](https://next.cloudinary.dev/)
- - [Pusher](https://pusher.com/)
- - [React Icons](https://react-icons.github.io/react-icons/)
- - [React Hot Toast](https://react-hot-toast.com/)
- - [Clsx](https://www.npmjs.com/package/clsx)
+ - [Nivo Charts](https://nivo.rocks/)
+ - [Material UI](https://mui.com/)
+ - [Full Calendar](https://fullcalendar.io/)
