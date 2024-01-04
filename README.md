@@ -1,5 +1,4 @@
 <div align="center"> 
-    <img src="https://drive.google.com/uc?export=download&id=1diDpkdadEnYG7Rdc4ozfAUN9uA1UVDyj" alt="Logo" width="80" height="80">
     <h1>Bet Statistixs</h1>
 </div>
 
@@ -12,7 +11,7 @@ You will be able to select the types of bets you want to register, either "Singl
 ## Tech Stack
 
 **This app was built with:** ReactJS, NodeJS, Express and MySQL
-    
+
 ## Screenshots
 
 ![App Screenshot](https://drive.google.com/uc?export=download&id=1kgwUzsW5W3ROjKgAwH1W6oZcKHBnk3t2)
@@ -24,7 +23,6 @@ You will be able to select the types of bets you want to register, either "Singl
 ![App Screenshot](https://drive.google.com/uc?export=download&id=1JDnv1lwuZ3JClViqzEfwsIRVir9M_ka6)
 
 ![App Screenshot](https://drive.google.com/uc?export=download&id=1Bc7HL5nzfbCjdlpZu4O1F4fc2zGSRzVi)
-
 
 ## Feedback
 
