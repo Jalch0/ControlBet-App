@@ -19,7 +19,7 @@ import EditBankroll from "./scenes/editbankroll"
 
 
 function App() {
-  axios.defaults.baseURL = `https://server-betstatistixs.vercel.app`;
+  axios.defaults.baseURL = `YOUR_DATABASE_URL`;
   const [theme, colorMode] = useMode();
 
   const { currentUser } = useContext(AuthContext);
